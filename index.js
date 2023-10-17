@@ -1,7 +1,7 @@
-
 const inquirer = require("inquirer");
 const {triangle, circle, square} = require("./lib/shapes");
 const fs = require("fs");
+
 
 
 const questions = [
@@ -37,12 +37,15 @@ function init() {
 function generateLogo(answers) { 
     if (answers.image === "triangle") {
         const shape = new triangle(answers.color, answers.text, answers.textColor);
+        writeToFile(shape);
     } else if (answers.image === "circle") {
         const shape = new circle(answers.color, answers.text, answers.textColor);
-    } else (answers.image === "square") {
+        writeToFile(shape);
+    } else {
         const shape = new square(answers.color, answers.text, answers.textColor);
+        writeToFile(shape);
     }
-    writeToFile(shape);
+    
 }
 
 function writeToFile(shape) {
@@ -50,11 +53,11 @@ function writeToFile(shape) {
     fs.writeFile("./dist/shape.svg", svgCode, (err) => {
         if (err) {
             console.log(err);
-        }
-
-        else {
+        } else {
             console.log("Congrats! You have made a logo!");
         }
         
     });
 }
+
+init();
