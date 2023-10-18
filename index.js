@@ -50,11 +50,11 @@ function generateLogo(answers) {
 
 function writeToFile(shape) {
     const svgCode = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">${shape.render()}</svg>`;
-    fs.writeFile("./dist/shape.svg", svgCode, (err) => {
+    fs.writeFile("./dist/logo.svg", svgCode, (err) => {
         if (err) {
             console.log(err);
         } else {
-            console.log("Congrats! You have made a logo!");
+            console.log("Generated logo.svg");
         }
         
     });
